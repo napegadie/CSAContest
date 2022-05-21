@@ -1,0 +1,99 @@
+﻿@using CSAContestWeb.Models
+@addTagHelper *, AuthoringTagHelpers
+@model List<DocumentModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Index: Azure Search</h1>
+    </div>
+</div>
+ 
+<div class="row">
+    <div class="col">
+        <div class="card h-100">
+            <img src="\Images\storage.png" class="card-img-top" alt="Card image cap" style="width:25%">
+            <div class="card-body">
+                <h5 class="card-title">Upload File to blob storage</h5>
+                <p class="card-text">Upload File to blob storage</p>
+                
+            </div>
+            <div class="card-footer">
+                <a asp-controller="BlobFile" asp-action="UploadFile" class="btn btn-sm btn-primary">
+                    <i class="fa fa-upload" aria-hidden="true"></i> Upload File</a> 
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <img class="card-img-top" src="\Images\Azure-Search_0.png" alt="Card image cap" style="width:25%">
+            <div class="card-body">
+                <h5 class="card-title">Search for document</h5>
+                <p class="card-text">Search documents from the Azure Cognitive search index</p>
+            </div>
+            <div class="card-footer">
+                <a asp-controller="SearchDoc" asp-action="Index" class="btn btn-sm btn-primary">
+                    <i class="fa fa-search" aria-hidden="true"></i> Search Doc</a> 
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<a asp-controller="BlobFile" asp-action="UploadFile" class="btn btn-sm btn-success" style="width: 100px">
+     <i class="fa-solid fa-plus"></i> Upload File</a> *@
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" style="width:100%">
+                <thead class="table-dark">
+                    <tr>
+                        <th>DateInvoice</th>
+                        <th>ReceiverBy</th>
+                        <th>BirdFindLocation</th>
+                        <th>DonorName</th>
+                        <th>DonorAddress</th>
+                        <th>DonorApt</th>
+                        <th>DonorCity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var doc in Model)
+                    {
+                        <tr>
+                            <td>@doc.DateInvoice</td>
+                            <td>@doc.ReceiverBy</td>
+                            <td>@doc.BirdFindLocation</td>
+                            <td>@doc.DonorName</td>
+                            <td>@doc.DonorAddress</td>
+                            <td>@doc.DonorApt</td>
+                            <td>@doc.DonorCity</td>
+                            <td>
+                                <form asp-action="Delete" asp-route-id="@doc.DocSearchId">
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-action="Update" asp-route-id="@doc.DocSearchId" class="btn btn-warning">
+                                            <i class="fas fa-edit"></i> </a> 
+                                        <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure to delete this record?')">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                    </div>
+                                 </form>
+                             </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

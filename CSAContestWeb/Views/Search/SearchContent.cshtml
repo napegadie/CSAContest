@@ -1,0 +1,25 @@
+﻿@*@model IList<Microsoft.Azure.Search.Models.SearchResult<AzureSearchWebApp.SearchResault>>  *@
+@{
+    ViewData["Title"] = "UploadFile";
+}
+
+<h1>Upload File</h1>
+
+<form class="d-flex" asp-controller="Search" asp-action="SearchContent" method="post">
+  <p>
+      Title: <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="SearchString">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+      @*<input class="searchBoxSubmit" type="submit" value="">*@
+  </p>
+</form>
+<br />  
+@if (Model != null)  
+   {  
+   foreach (var item in Model)  
+      {  
+         <b>@item.Document.metadata_storage_name</b>  
+         <br />  
+         @item.Document.content  
+      <hr />  
+   }  
+}  

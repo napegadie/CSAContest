@@ -1,0 +1,103 @@
+﻿@using CSAContestWeb.Models
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@model DocumentModel
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="jumbotron">
+            <h1 class="display-4">Update Document</h1>
+            <p class="lead">Update a new Document to the available list.</p>
+        </div>
+    </div>
+</div>
+
+@*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+<form asp-controller="Home" asp-action="Update" method="post">
+    <div class="form-row">
+        <div class="col-md-6 offset-md-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DocSearchId" />
+            <input type="hidden" asp-for="StoragePath" />
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label asp-for="DateInvoice"></label>
+                    <input asp-for="DateInvoice" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.DateInvoice)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="ReceiverBy"></label>
+                    <input asp-for="ReceiverBy" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.ReceiverBy)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="BirdFindLocation"></label>
+                    <input asp-for="BirdFindLocation" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.BirdFindLocation)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DonorName"></label>
+                    <input asp-for="DonorName" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.DonorName)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DonorAddress"></label>
+                    <input asp-for="DonorAddress" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.DonorAddress)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DonorApt"></label>
+                    <input asp-for="DonorApt" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.DonorApt)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DonorCity"></label>
+                    <input asp-for="DonorCity" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.DonorCity)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DonorPostal"></label>
+                    <input asp-for="DonorPostal" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.DonorPostal)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DonorTel"></label>
+                    <input asp-for="DonorTel" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.DonorTel)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="DonorEmail"></label>
+                    <input asp-for="DonorEmail" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.DonorEmail)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="SumGifted"></label>
+                    <input asp-for="SumGifted" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.SumGifted)*@
+                </div>
+                <div class="form-group">
+                    <label asp-for="TaxReceipt"></label>
+                    <input asp-for="TaxReceipt" class="form-control" /><br />
+                    @*@Html.ValidationMessageFor(x => x.TaxReceipt)*@
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary w-100" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary  w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
